@@ -1,0 +1,2 @@
+javac -classpath soot/sootclasses-trunk.jar:soot-trunk.jar ./src/*.java
+javac ./benchmarks/*.java
