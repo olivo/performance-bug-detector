@@ -1,1 +1,1 @@
-java -cp .:soot/sootclasses-trunk.jar:soot/soot-trunk.jar:src PerformanceBugDetector -cp benchmarks:soot/rt.jar -f J -app Example1
+java -cp .:soot/sootclasses-trunk.jar:soot/soot-trunk.jar:src PerformanceBugDetector -cp benchmarks:soot/rt.jar:soot/jce.jar -f J -app -W Example1
