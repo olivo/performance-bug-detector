@@ -6,4 +6,12 @@ class MethodSummaryMap {
     public MethodSummaryMap() {
 	map = new HashMap<MethodSummaryKey, MethodSummary>();
     }
+
+    public MethodSummary get(MethodSummaryKey key) {
+	return map.get(key);
+    }
+    
+    public void put(MethodSummaryKey key, MethodSummary value) {
+	map.put(key, value);
+    }
 }
