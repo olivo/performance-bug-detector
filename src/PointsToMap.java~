@@ -1,5 +1,0 @@
-class PointsToMap {
-
-    private HashMap<PointsToKey, PointsToSet> map;
-
-}
