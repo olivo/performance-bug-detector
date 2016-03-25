@@ -1,0 +1,4 @@
+class PointsToSet {
+
+    private HashSet<HeapObject> set;
+}

@@ -1,0 +1,20 @@
+class PointsToAnalysis {
+
+    public PointsToMap computePointsToMap(String mainClassName) {
+		CallGraph callGraph = Scene.v().getCallGraph();
+	SootClass sootClass = Scene.v().getSootClass(mainClassName);
+	
+	for(SootMethod sootMethod : sootClass.getMethods()) {
+	    System.out.println("Found method: " + sootMethod.getSignature());
+	    Iterator<Edge> edges = callGraph.edgesInto(sootMethod);
+	    System.out.println("The predecessors are: ");
+	    while(edges.hasNext()) {
+		Edge edge = edges.next();
+		System.out.println("Predecessor: " + edge.getSrc().method().getSignature());
+	    }
+	    System.out.println();
+	}
+
+
+    }
+}
