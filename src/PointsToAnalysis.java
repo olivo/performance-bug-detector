@@ -7,13 +7,15 @@ import java.util.Iterator;
 
 class PointsToAnalysis {
 
-    public PointsToMap computePointsToMap(String mainClassName) {
+    public GlobalPointsToMap computePointsToMap(String mainClassName) {
 		
 	CallGraph callGraph = Scene.v().getCallGraph();
 	SootClass sootClass = Scene.v().getSootClass(mainClassName);
-	PointsToMap pointsToMap = new PointsToMap();
+	GlobalPointsToMap globalPointsToMap = new GlobalPointsToMap();
 	
 	for(SootMethod sootMethod : sootClass.getMethods()) {
+	    
+	    PointsToMap pointsToMap = new PointsToMap();
 	    System.out.println("Found method: " + sootMethod.getSignature());
 	    Iterator<Edge> edges = callGraph.edgesInto(sootMethod);
 	    System.out.println("The predecessors are: ");
@@ -24,6 +26,6 @@ class PointsToAnalysis {
 	    System.out.println();
 	}
 
-	return pointsToMap;
+	return globalPointsToMap;
     }
 }
