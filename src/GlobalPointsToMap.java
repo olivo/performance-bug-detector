@@ -20,4 +20,10 @@ class GlobalPointsToMap {
     public Set<FunctionSignature> keySet() {
 	return map.keySet();
     }
+
+    public void print() {
+	for(FunctionSignature signature : keySet()) {
+	    System.out.println(signature);
+	}
+    }
 }

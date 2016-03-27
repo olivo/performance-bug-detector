@@ -8,7 +8,7 @@ import java.util.LinkedList;
 
 class PointsToAnalysis {
 
-    public GlobalPointsToMap computePointsToMap(String mainClassName) {
+    public GlobalPointsToMap computeGlobalPointsToMap(String mainClassName) {
 		
 	CallGraph callGraph = Scene.v().getCallGraph();
 	SootClass sootClass = Scene.v().getSootClass(mainClassName);
@@ -24,11 +24,19 @@ class PointsToAnalysis {
 	    globalPointsToMap.put(signature, pointsToMap);
 	}
 
-	System.out.println("=== Points-To Maps ===");
-	for(FunctionSignature signature : globalPointsToMap.keySet()) {
-	    System.out.println(signature);
+	// Compute the points-to maps iteratively.
+	while(!methodQueue.isEmpty()) {
+	    SootMethod sootMethod = methodQueue.remove();
+	    computeMethodPointsToMap(sootMethod, globalPointsToMap);
 	}
+
+	System.out.println("=== Points-To Maps ===");
+	globalPointsToMap.print();
 
 	return globalPointsToMap;
     }
+
+    public void computeMethodPointsToMap(SootMethod sootMethod, GlobalPointsToMap globalPointstoMap) {
+
+    }    
 }
