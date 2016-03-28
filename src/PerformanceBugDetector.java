@@ -12,10 +12,14 @@ public class PerformanceBugDetector {
 	    mainClassName = args[args.length - 1];
 	}
 	System.out.println("Starting analysis over class: " + mainClassName);
+
 	Pack pack = PackManager.v().getPack("wjtp");
 	Transform transform = new Transform("wjtp.PerformanceBugAnalysis", PerformanceBugAnalysis.v(mainClassName));
 	pack.add(transform);
 	soot.Main.main(args);
 	System.out.println("=== FINISHED PERFORMANCE BUG DETECTION ===");
+
+
+
     }
 }
