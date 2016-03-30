@@ -9,4 +9,12 @@ class PointsToInfo {
 	this.mayAlias = mayAlias;
 	this.mustAlias = mustAlias;
     }
+
+    public LocalMayAliasAnalysis getMayAliasAnalysis() {
+	return mayAlias;
+    }
+
+    public LocalMustAliasAnalysis getMustAliasAnalysis() {
+	return mustAlias;
+    }
 }
