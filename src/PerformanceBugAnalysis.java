@@ -14,8 +14,13 @@ class PerformanceBugAnalysis extends SceneTransformer {
 
 	System.out.println("=== STARTED PERFORMANCE BUG ANALYSIS ===");
 
+	// Compute Points-to information.
 	PointsToAnalysis ptsToAnalysis = new PointsToAnalysis();
 	GlobalPointsToMap globalPtsToMap = ptsToAnalysis.computeGlobalPointsToMap(mainClassName);
+
+	// Compute read, access and write footprints.
+	SummaryAnalysis summaryAnalysis = new SummaryAnalysis();
+	GlobalSummary globalSummary = summaryAnalysis.computeGlobalSummary(mainClassName, globalPtsToMap);
 
 	System.out.println("=== FINISHED PERFORMANCE BUG ANALYSIS ===");
     }
