@@ -17,12 +17,11 @@ class PointsToAnalysis {
 	CallGraph callGraph = Scene.v().getCallGraph();
 	SootClass sootClass = Scene.v().getSootClass(mainClassName);
 	GlobalPointsToMap globalPointsToMap = new GlobalPointsToMap();
-	LinkedList<SootMethod> methodQueue = new LinkedList<SootMethod>();
 	
 	// Add all method to the processing queue, and create empty starting points-to maps for them.
-	for(SootMethod sootMethod : sootClass.getMethods()) {
+	for(SootMethod method : sootClass.getMethods()) {
 
-	    computeMethodPointsToMap(sootMethod, globalPointsToMap);	    
+	    computeMethodPointsToMap(method, globalPointsToMap);	    
 	}
 
 	System.out.println("=== Points-To Maps ===");
