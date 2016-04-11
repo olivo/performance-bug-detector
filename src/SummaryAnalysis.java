@@ -24,6 +24,19 @@ class SummaryAnalysis {
 	    methodQueue.add(method);
 	}
 
+	// Compute summaries for the methods.
+	while(!methodQueue.isEmpty()){
+	    SootMethod method = methodQueue.removeFirst();
+	    boolean changed = computeMethodSummary(method, globalSummary);
+	}
+
 	return globalSummary;
+    }
+
+    public boolean computeMethodSummary(SootMethod method, GlobalSummary globalSummary){
+	GlobalSummaryKey key = new GlobalSummaryKey(method.getDeclaration());
+	Summary summary = new Summary();
+	globalSummary.put(key, summary);
+	return true;
     }
 }
